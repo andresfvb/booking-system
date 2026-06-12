@@ -35,8 +35,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
-
 use BookingSystem\Core\Plugin;
 use BookingSystem\Database\Migrations;
 

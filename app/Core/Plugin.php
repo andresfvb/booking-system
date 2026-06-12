@@ -21,11 +21,16 @@ class Plugin
 
     public function boot(){
         $this->loadAcfJson();
+        \BookingSystem\Providers\AcfProvider::boot();
         $this->registerRoutes();
     }
 
-    private function loadAcfJson(): void
+    private function loadAcfJson()
     {
+        if (!function_exists('acf_add_local_field_group')) {
+            return;
+        }
+
         add_filter(
             'acf/settings/load_json',
             function ($paths) {
@@ -35,9 +40,17 @@ class Plugin
                 return $paths;
             }
         );
+
+        add_filter(
+            'acf/settings/save_json',
+            function () {
+
+                return BOOKING_SYSTEM_PATH . 'acf-json';
+            }
+        );
     }
 
-    private function registerRoutes(): void
+    private function registerRoutes()
     {
         // Próxima fase
     }

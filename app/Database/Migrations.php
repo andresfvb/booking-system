@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 
 class Migrations
 {
-    public static function run(): void
+    public static function run()
     {
         self::createServicesTable();
 
@@ -20,7 +20,7 @@ class Migrations
         );
     }
 
-    private static function createServicesTable(): void
+    private static function createServicesTable()
     {
         global $wpdb;
 
@@ -46,7 +46,7 @@ class Migrations
         dbDelta($sql);
     }
 
-    private static function createReservationsTable(): void
+    private static function createReservationsTable()
     {
         global $wpdb;
 

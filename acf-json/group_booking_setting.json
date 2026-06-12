@@ -1,0 +1,134 @@
+{
+  "key": "group_booking_settings",
+  "title": "Booking Settings",
+  "fields": [
+    {
+      "key": "field_booking_tab_general",
+      "label": "General",
+      "type": "tab"
+    },
+    {
+      "key": "field_timezone",
+      "label": "Timezone",
+      "name": "timezone",
+      "type": "text",
+      "default_value": "America/Bogota"
+    },
+    {
+      "key": "field_opening_hour",
+      "label": "Opening Hour",
+      "name": "opening_hour",
+      "type": "time_picker"
+    },
+    {
+      "key": "field_closing_hour",
+      "label": "Closing Hour",
+      "name": "closing_hour",
+      "type": "time_picker"
+    },
+    {
+      "key": "field_minimum_advance_hours",
+      "label": "Minimum Advance Hours",
+      "name": "minimum_advance_hours",
+      "type": "number",
+      "default_value": 2,
+      "min": 1
+    },
+    {
+      "key": "field_max_active_reservations",
+      "label": "Max Active Reservations",
+      "name": "max_active_reservations",
+      "type": "number",
+      "default_value": 3,
+      "min": 1
+    },
+
+    {
+      "key": "field_booking_tab_refunds",
+      "label": "Refund Rules",
+      "type": "tab"
+    },
+
+    {
+      "key": "field_standard_full_refund_hours",
+      "label": "Standard Full Refund Hours",
+      "name": "standard_full_refund_hours",
+      "type": "number",
+      "default_value": 24
+    },
+    {
+      "key": "field_standard_partial_refund_hours",
+      "label": "Standard Partial Refund Hours",
+      "name": "standard_partial_refund_hours",
+      "type": "number",
+      "default_value": 4
+    },
+    {
+      "key": "field_standard_partial_refund_percentage",
+      "label": "Standard Partial Refund Percentage",
+      "name": "standard_partial_refund_percentage",
+      "type": "number",
+      "default_value": 50
+    },
+
+    {
+      "key": "field_premium_full_refund_hours",
+      "label": "Premium Full Refund Hours",
+      "name": "premium_full_refund_hours",
+      "type": "number",
+      "default_value": 4
+    },
+    {
+      "key": "field_premium_partial_refund_hours",
+      "label": "Premium Partial Refund Hours",
+      "name": "premium_partial_refund_hours",
+      "type": "number",
+      "default_value": 1
+    },
+    {
+      "key": "field_premium_partial_refund_percentage",
+      "label": "Premium Partial Refund Percentage",
+      "name": "premium_partial_refund_percentage",
+      "type": "number",
+      "default_value": 50
+    },
+
+    {
+      "key": "field_booking_tab_holidays",
+      "label": "Holidays",
+      "type": "tab"
+    },
+
+    {
+      "key": "field_holidays",
+      "label": "Holidays",
+      "name": "holidays",
+      "type": "repeater",
+      "button_label": "Add Holiday",
+      "sub_fields": [
+        {
+          "key": "field_holiday_date",
+          "label": "Date",
+          "name": "date",
+          "type": "date_picker",
+          "return_format": "Y-m-d"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "booking-settings"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true
+}

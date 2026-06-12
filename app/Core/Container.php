@@ -8,7 +8,7 @@ class Container
 {
     protected array $services = [];
 
-    public function set(string $key, $service): void
+    public function set(string $key, $service)
     {
         $this->services[$key] = $service;
     }
