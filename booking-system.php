@@ -20,6 +20,10 @@ define(
     'BOOKING_SYSTEM_URL',
     plugin_dir_url(__FILE__)
 );
+define(
+    'BOOKING_SYSTEM_DB_VERSION',
+    '1.0.0'
+);
 
 
 
@@ -34,5 +38,11 @@ if (!defined('ABSPATH')) {
 require_once __DIR__ . '/vendor/autoload.php';
 
 use BookingSystem\Core\Plugin;
+use BookingSystem\Database\Migrations;
+
+register_activation_hook(
+    __FILE__,
+    [Migrations::class, 'run']
+);
 
 Plugin::init();
