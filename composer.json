@@ -1,0 +1,11 @@
+{
+    "name": "andresfvb/booking-system",
+    "description": "Booking System Technical Test",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "BookingSystem\\": "app/"
+        }
+    },
+    "require": {}
+}
