@@ -175,4 +175,23 @@ class ReservationRepository
 
         return $deleted !== false;
     }
+
+    public function updateStatus(
+        int $reservationId,
+        string $status
+    ): bool {
+
+        global $wpdb;
+
+        return (bool) $wpdb->update(
+            $this->table,
+            [
+                'status' => $status,
+                'updated_at' => current_time('mysql')
+            ],
+            [
+                'id' => $reservationId
+            ]
+        );
+    }
 }
