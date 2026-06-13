@@ -114,13 +114,11 @@ Con más tiempo incorporaría:
 
 * PHPUnit.
 * Testing de integración.
-* Docker.
-* GitHub Actions.
 * Observabilidad y logging estructurado.
 * JWT Authentication.
 * Cobertura automatizada de pruebas.
 * Integración con sistemas externos de calendario.
-* Integración con pasarelas de pago.
+* Agregar membresias por usuarios
 
 ---
 
