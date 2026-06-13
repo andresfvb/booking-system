@@ -1,34 +1,40 @@
 {
   "key": "group_booking_settings",
-  "title": "Booking Settings",
+  "title": "Configuración del Sistema de Reservas",
   "fields": [
     {
       "key": "field_booking_tab_general",
-      "label": "General",
+      "label": "Configuración General",
       "type": "tab"
     },
     {
       "key": "field_timezone",
-      "label": "Timezone",
+      "label": "Zona Horaria",
+      "instructions": "Zona horaria utilizada para calcular horarios, disponibilidad y políticas de cancelación.",
       "name": "timezone",
       "type": "text",
       "default_value": "America/Bogota"
     },
     {
       "key": "field_opening_hour",
-      "label": "Opening Hour",
+      "label": "Hora de Apertura",
+      "instructions": "Hora desde la cual se permiten reservas.",
       "name": "opening_hour",
+      "return_format": "H:i",
       "type": "time_picker"
     },
     {
       "key": "field_closing_hour",
-      "label": "Closing Hour",
+      "label": "Hora de Cierre",
+      "instructions": "Hora máxima permitida para iniciar una reserva.",
       "name": "closing_hour",
-      "type": "time_picker"
+      "type": "time_picker",
+      "return_format": "H:i"
     },
     {
       "key": "field_minimum_advance_hours",
-      "label": "Minimum Advance Hours",
+      "label": "Horas Mínimas de Anticipación",
+      "instructions": "Cantidad mínima de horas con las que un usuario debe realizar una reserva.",
       "name": "minimum_advance_hours",
       "type": "number",
       "default_value": 2,
@@ -36,7 +42,8 @@
     },
     {
       "key": "field_max_active_reservations",
-      "label": "Max Active Reservations",
+      "label": "Máximo de Reservas Activas por Usuario",
+      "instructions": "Número máximo de reservas futuras que un usuario puede tener activas al mismo tiempo.",
       "name": "max_active_reservations",
       "type": "number",
       "default_value": 3,
@@ -45,73 +52,111 @@
 
     {
       "key": "field_booking_tab_refunds",
-      "label": "Refund Rules",
+      "label": "Políticas de Reembolso",
       "type": "tab"
     },
 
     {
+      "key": "field_standard_message",
+      "label": "Clientes Estándar",
+      "name": "",
+      "type": "message",
+      "message": "<strong>Configuración de reembolsos para clientes estándar.</strong><br>Las reglas se aplican según el tiempo restante antes de la reserva.",
+      "new_lines": "wpautop",
+      "esc_html": 0
+    },
+
+    {
       "key": "field_standard_full_refund_hours",
-      "label": "Standard Full Refund Hours",
+      "label": "Reembolso Total (Horas)",
+      "instructions": "Si la cancelación se realiza con esta cantidad de horas o más, se devuelve el 100% del valor pagado.",
       "name": "standard_full_refund_hours",
       "type": "number",
-      "default_value": 24
+      "default_value": 24,
+      "min": 1
     },
     {
       "key": "field_standard_partial_refund_hours",
-      "label": "Standard Partial Refund Hours",
+      "label": "Reembolso Parcial Desde (Horas)",
+      "instructions": "Si la cancelación ocurre después de este límite y antes del reembolso total, se aplicará el porcentaje parcial configurado.",
       "name": "standard_partial_refund_hours",
       "type": "number",
-      "default_value": 4
+      "default_value": 4,
+      "min": 1
     },
     {
       "key": "field_standard_partial_refund_percentage",
-      "label": "Standard Partial Refund Percentage",
+      "label": "Porcentaje de Reembolso Parcial (%)",
+      "instructions": "Porcentaje a devolver cuando aplique un reembolso parcial.",
       "name": "standard_partial_refund_percentage",
       "type": "number",
-      "default_value": 50
+      "default_value": 50,
+      "min": 0,
+      "max": 100
+    },
+
+    {
+      "key": "field_premium_message",
+      "label": "Clientes Premium",
+      "name": "",
+      "type": "message",
+      "message": "<strong>Configuración de reembolsos para clientes premium.</strong><br>Los clientes premium tienen condiciones preferenciales de cancelación.",
+      "new_lines": "wpautop",
+      "esc_html": 0
     },
 
     {
       "key": "field_premium_full_refund_hours",
-      "label": "Premium Full Refund Hours",
+      "label": "Reembolso Total (Horas)",
+      "instructions": "Si la cancelación se realiza con esta cantidad de horas o más, se devuelve el 100% del valor pagado.",
       "name": "premium_full_refund_hours",
       "type": "number",
-      "default_value": 4
+      "default_value": 4,
+      "min": 1
     },
     {
       "key": "field_premium_partial_refund_hours",
-      "label": "Premium Partial Refund Hours",
+      "label": "Reembolso Parcial Desde (Horas)",
+      "instructions": "Límite mínimo para otorgar un reembolso parcial.",
       "name": "premium_partial_refund_hours",
       "type": "number",
-      "default_value": 1
+      "default_value": 1,
+      "min": 0
     },
     {
       "key": "field_premium_partial_refund_percentage",
-      "label": "Premium Partial Refund Percentage",
+      "label": "Porcentaje de Reembolso Parcial (%)",
+      "instructions": "Porcentaje a devolver cuando aplique un reembolso parcial.",
       "name": "premium_partial_refund_percentage",
       "type": "number",
-      "default_value": 50
+      "default_value": 50,
+      "min": 0,
+      "max": 100
     },
 
     {
       "key": "field_booking_tab_holidays",
-      "label": "Holidays",
+      "label": "Disponibilidad y Restricciones",
       "type": "tab"
     },
 
     {
       "key": "field_holidays",
-      "label": "Holidays",
+      "label": "Festivos y Fechas No Disponibles",
+      "instructions": "Los usuarios no podrán crear reservas en las fechas configuradas aquí.",
       "name": "holidays",
       "type": "repeater",
-      "button_label": "Add Holiday",
+      "layout": "table",
+      "button_label": "Agregar Fecha Bloqueada",
       "sub_fields": [
         {
           "key": "field_holiday_date",
-          "label": "Date",
+          "label": "Fecha",
           "name": "date",
           "type": "date_picker",
-          "return_format": "Y-m-d"
+          "display_format": "d/m/Y",
+          "return_format": "Y-m-d",
+          "first_day": 1
         }
       ]
     }
@@ -127,8 +172,10 @@
   ],
   "menu_order": 0,
   "position": "normal",
-  "style": "default",
+  "style": "seamless",
   "label_placement": "top",
   "instruction_placement": "label",
-  "active": true
+  "hide_on_screen": [],
+  "active": true,
+  "description": "Configuración centralizada de reglas de negocio para el sistema de reservas."
 }
