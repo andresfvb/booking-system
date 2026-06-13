@@ -1,27 +1,22 @@
 {
     "services": [
         {
-            "name": "General Consultation",
-            "duration_minutes": 60,
-            "price": 100,
+            "name": "Haircut",
+            "duration_minutes": 30,
+            "price": 50,
             "non_refundable": false
         },
         {
-            "name": "Premium Consultation",
-            "duration_minutes": 90,
-            "price": 200,
-            "non_refundable": true
-        }
-    ],
-
-    "professionals": [
-        {
-            "id": 1,
-            "name": "Dr. John Smith"
+            "name": "Massage",
+            "duration_minutes": 60,
+            "price": 120,
+            "non_refundable": false
         },
         {
-            "id": 2,
-            "name": "Dr. Sarah Johnson"
+            "name": "VIP Treatment",
+            "duration_minutes": 90,
+            "price": 250,
+            "non_refundable": true
         }
     ]
 }

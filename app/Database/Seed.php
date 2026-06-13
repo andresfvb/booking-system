@@ -6,45 +6,74 @@ defined('ABSPATH') || exit;
 
 class Seed
 {
-    public static function run()
+public function run(): void
     {
-        global $wpdb;
+        $file = BOOKING_SYSTEM_PATH .
+            'storage/seed.json';
 
-        $table = Schema::servicesTable();
-
-        $exists = $wpdb->get_var(
-            "SELECT COUNT(*) FROM {$table}"
-        );
-
-        if ($exists > 0) {
+        if (!file_exists($file)) {
             return;
         }
 
-        $services = [
-            [
-                'name' => 'General Consultation',
-                'duration_minutes' => 60,
-                'price' => 100,
-                'non_refundable' => 0,
-            ],
-            [
-                'name' => 'Premium Consultation',
-                'duration_minutes' => 90,
-                'price' => 200,
-                'non_refundable' => 0,
-            ],
-            [
-                'name' => 'Special Procedure',
-                'duration_minutes' => 120,
-                'price' => 300,
-                'non_refundable' => 1,
-            ],
-        ];
+        $content = file_get_contents($file);
+
+        $data = json_decode(
+            $content,
+            true
+        );
+
+        if (!$data) {
+            return;
+        }
+
+        $this->seedServices(
+            $data['services'] ?? []
+        );
+    }
+
+    private function seedServices(
+        array $services
+    ): void {
+
+        global $wpdb;
+
+        $table =
+            Schema::servicesTable();
 
         foreach ($services as $service) {
+
+            $exists = $wpdb->get_var(
+                $wpdb->prepare(
+                    "
+                    SELECT id
+                    FROM {$table}
+                    WHERE name = %s
+                    ",
+                    $service['name']
+                )
+            );
+
+            if ($exists) {
+                continue;
+            }
+
             $wpdb->insert(
                 $table,
-                $service
+                [
+                    'name' =>
+                        $service['name'],
+
+                    'duration_minutes' =>
+                        $service['duration_minutes'],
+
+                    'price' =>
+                        $service['price'],
+
+                    'non_refundable' =>
+                        $service['non_refundable']
+                            ? 1
+                            : 0
+                ]
             );
         }
     }
