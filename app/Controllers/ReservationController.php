@@ -22,7 +22,8 @@ class ReservationController
                 serviceId: (int) $request->get_param('service_id'),
                 professionalId: (int) $request->get_param('professional_id'),
                 startDateTime: new \DateTime(
-                    $request->get_param('start_datetime')
+                    $request['start_datetime'],
+                    new \DateTimeZone('America/Bogota')
                 )
             );
 

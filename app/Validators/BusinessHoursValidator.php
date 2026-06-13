@@ -12,9 +12,6 @@ class BusinessHoursValidator
         $rules = new BookingRulesService();
 
         $hour = $date->format('H:i');
-                error_log('Reservation Hour: ' . $hour);
-error_log('Opening Hour: ' . $rules->getOpeningHour());
-error_log('Closing Hour: ' . $rules->getClosingHour());
 
         if (
             $hour < $rules->getOpeningHour()

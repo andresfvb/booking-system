@@ -31,6 +31,12 @@ class AdvanceTimeValidator
         $hours =
             $diffSeconds / 3600;
 
+error_log('Now TZ: ' . $now->getTimezone()->getName());
+error_log('Reservation TZ: ' . $date->getTimezone()->getName());
+
+error_log('Now TS: ' . $now->getTimestamp());
+error_log('Reservation TS: ' . $date->getTimestamp());
+
         if ($hours < $minimumHours) {
 
             throw new BookingValidationException(
