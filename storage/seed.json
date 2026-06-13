@@ -1,0 +1,27 @@
+{
+    "services": [
+        {
+            "name": "General Consultation",
+            "duration_minutes": 60,
+            "price": 100,
+            "non_refundable": false
+        },
+        {
+            "name": "Premium Consultation",
+            "duration_minutes": 90,
+            "price": 200,
+            "non_refundable": true
+        }
+    ],
+
+    "professionals": [
+        {
+            "id": 1,
+            "name": "Dr. John Smith"
+        },
+        {
+            "id": 2,
+            "name": "Dr. Sarah Johnson"
+        }
+    ]
+}

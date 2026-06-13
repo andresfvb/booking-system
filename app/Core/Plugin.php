@@ -52,6 +52,12 @@ class Plugin
 
     private function registerRoutes()
     {
-        // Próxima fase
+        add_action(
+            'rest_api_init',
+            [
+                \BookingSystem\Routes\ApiRoutes::class,
+                'register'
+            ]
+        );
     }
 }
